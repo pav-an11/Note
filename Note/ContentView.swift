@@ -34,7 +34,10 @@ struct ContentView: View {
                         }
                 }
             }
+            //for make the background color black
+            .background(Color.black)
             .navigationTitle("My Lists")
+            .foregroundStyle(Color.white)
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     Button{
@@ -48,7 +51,8 @@ struct ContentView: View {
                 
             }
             .alert("Create a new list", isPresented: $isAlertShowing){
-                TextField("Enter a list",text: $title )
+                TextField("Enter a list",text: $title)
+                
                 
                 Button(){
                     modelContext.insert(Listt(title: title))
@@ -56,7 +60,11 @@ struct ContentView: View {
                 }label: {
                     Text("Save")
                 }
+                
                 .disabled(title.isEmpty)
+                Button("Cancel",role: .cancel){
+                    title = ""
+                }
             }
             .overlay{
                 if lists.isEmpty {
@@ -65,9 +73,23 @@ struct ContentView: View {
                         systemImage: "plus.circle.fill",
                         description: Text("No lists yet. Add one to get started.")
                     )
+                    // for make background color balck
+                    .foregroundStyle(.white)
                 }
             }
         }
+        .background(Color.black)
+        .environment(\.colorScheme, .dark)
+        //full screen overplay-tap any where to show note input
+//        if !isNotePresented{
+//            Color.clear
+//                .contentShape(Rectangle())
+//                .ignoresSafeArea()
+//                .onTapGesture{
+//                    title = ""
+//                    isNotePresented = true
+//                }
+//        }
     }
 }
 
