@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  Note
-//
-//  Created by students on 04/12/25.
-//
 
 import SwiftUI
 import SwiftData
@@ -21,16 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack{
-            ZStack{
-                // Full-screen transparant tappable layer
-                Color.clear.contentShape(Rectangle())
-                    .ignoresSafeArea()
-                    .onTapGesture{
-                        // Tap anywhere to show input
-                        title = ""
-                        isAlertShowing = true
-                    }
-            }
+            
             // Your Existing list content on top
             List {
                 ForEach(lists) { list in
